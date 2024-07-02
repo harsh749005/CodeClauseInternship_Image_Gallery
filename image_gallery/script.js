@@ -1,5 +1,11 @@
 import data from "./data.js";
 
+let details = `
+ <div class="heading">Gallery -> Photos</div>
+            <h3>Image Gallery</h3>
+<h2>Total Images : ${data.length}</h2>`
+document.querySelector(".heading-container").innerHTML = details;
+
 function showImages() {
   let clutter = "";
   data.forEach((obj) => {
@@ -35,3 +41,31 @@ function showImages() {
   });
 }
 showImages();
+
+
+function showMenu(){
+  const menu = document.querySelector(".menu");
+  const root = document.getElementById("root");
+  const navbar = document.getElementById("navbar");
+  const open = document.getElementById("open");
+  const close = document.getElementById("close");
+  close.style.display = "none";
+  let isMenuOpen = "false"
+  menu.addEventListener('click',()=>{
+    if(isMenuOpen){
+      navbar.style.display = "none";
+      root.style.opacity = 1;
+      close.style.display = "none";
+      open.style.display = "block";
+    }
+    else{
+      root.style.opacity = .6;
+      navbar.style.display = "flex";
+      close.style.display = "block";
+      open.style.display = "none";
+    }
+    isMenuOpen = !isMenuOpen;
+  })
+
+}
+showMenu();
